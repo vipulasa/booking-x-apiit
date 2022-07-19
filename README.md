@@ -12,3 +12,6 @@ php artisan migrate
 php artisan db:seed
 php artisan serve
 ```
+
+Final step
+Copy the .env.exmple as .env and update the DB_DATABASE path with your current file folder location
