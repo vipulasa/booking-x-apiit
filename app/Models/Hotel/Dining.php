@@ -11,14 +11,14 @@ class Dining extends Model
     use HasFactory,
         SoftDeletes;
 
-   /**
+    /**
      * The model's attributes.
      *
      * @var array
      */
     protected $attributes = [
         'sort_order' => 0,
-        'status' => 1
+        'status' => 1,
     ];
 
     /**
@@ -28,7 +28,7 @@ class Dining extends Model
      */
     protected $fillable = [
         'sort_order',
-        'status'
+        'status',
     ];
 
     /**

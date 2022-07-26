@@ -18,7 +18,7 @@ class Accommodation extends Model
      */
     protected $attributes = [
         'sort_order' => 0,
-        'status' => 1
+        'status' => 1,
     ];
 
     /**
@@ -28,7 +28,7 @@ class Accommodation extends Model
      */
     protected $fillable = [
         'sort_order',
-        'status'
+        'status',
     ];
 
     /**

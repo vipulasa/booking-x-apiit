@@ -11,13 +11,13 @@ class Booking extends Model
     use HasFactory,
         SoftDeletes;
 
-   /**
+    /**
      * The model's attributes.
      *
      * @var array
      */
     protected $attributes = [
-        'status' => 1
+        'status' => 1,
     ];
 
     /**
@@ -26,7 +26,7 @@ class Booking extends Model
      * @var array<string>
      */
     protected $fillable = [
-        'status'
+        'status',
     ];
 
     /**
