@@ -27,6 +27,10 @@ class Page extends Model
      * @var array<string>
      */
     protected $fillable = [
+        'title',
+        'url',
+        'summary',
+        'content',
         'sort_order',
         'status',
     ];

@@ -16,6 +16,14 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
 
+            $table->string('title');
+
+            $table->string('url')->unique();
+
+            $table->longText('summary')->nullable();
+
+            $table->longText('content')->nullable();
+
             $table->tinyInteger('sort_order')->default(0);
             $table->boolean('status')->default(true);
             $table->timestamps();
