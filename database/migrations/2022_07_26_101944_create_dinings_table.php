@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('dinings', function (Blueprint $table) {
             $table->id();
+
+            $table->tinyInteger('sort_order')->default(0);
+            $table->boolean('status')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
