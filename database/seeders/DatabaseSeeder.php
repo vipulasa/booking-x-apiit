@@ -38,5 +38,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Auth\User::factory(10)->create();
+
+        $this->call([
+            CategorySeeder::class,
+        ]);
     }
 }

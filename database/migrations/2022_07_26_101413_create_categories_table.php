@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->string('title');
+
+            $table->string('url')->unique();
+
+            $table->longText('summary')->nullable();
+
+            $table->longText('content')->nullable();
 
             $table->tinyInteger('sort_order')->default(0);
             $table->boolean('status')->default(true);
@@ -33,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('categories');
     }
 };

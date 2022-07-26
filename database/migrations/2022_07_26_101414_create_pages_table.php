@@ -25,7 +25,9 @@ return new class extends Migration
             $table->longText('content')->nullable();
 
             $table->tinyInteger('sort_order')->default(0);
+
             $table->boolean('status')->default(true);
+
             $table->timestamps();
             $table->softDeletes();
         });
