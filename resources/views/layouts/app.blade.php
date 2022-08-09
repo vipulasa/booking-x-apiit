@@ -35,75 +35,79 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               Administration
-                            </a>
+                    @auth
+                        @can('accessAdministration')
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Administration
+                                    </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                    Dashboard
-                                </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                            Dashboard
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <span>Authentication</span>
-                                <a class="dropdown-item" href="{{ route('users.index') }}">
-                                    Users
-                                </a>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Authentication</small>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">
+                                            Users
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <span>Content</span>
-                                <a class="dropdown-item" href="{{ route('pages.index') }}">
-                                    Pages
-                                </a>
-                                <a class="dropdown-item" href="{{ route('categories.index') }}">
-                                    Categories
-                                </a>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Content</small>
+                                        <a class="dropdown-item" href="{{ route('pages.index') }}">
+                                            Pages
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('categories.index') }}">
+                                            Categories
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <span>Booking & Reservations</span>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Booking & Reservations</small>
 
-                                <a class="dropdown-item" href="{{ route('bookings.index') }}">
-                                    Bookings
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('bookings.index') }}">
+                                            Bookings
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <span>Hotel</span>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Hotel</small>
 
-                                <a class="dropdown-item" href="{{ route('hotels.index') }}">
-                                    Hotels
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('hotels.index') }}">
+                                            Hotels
+                                        </a>
 
-                                <a class="dropdown-item" href="{{ route('facilities.index') }}">
-                                    Facilities
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('facilities.index') }}">
+                                            Facilities
+                                        </a>
 
-                                <a class="dropdown-item" href="{{ route('dinings.index') }}">
-                                    Dinings
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('dinings.index') }}">
+                                            Dinings
+                                        </a>
 
-                                <a class="dropdown-item" href="{{ route('accommodations.index') }}">
-                                    Accommodations
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('accommodations.index') }}">
+                                            Accommodations
+                                        </a>
 
-                                <a class="dropdown-item" href="{{ route('experiences.index') }}">
-                                    Experiences
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('experiences.index') }}">
+                                            Experiences
+                                        </a>
 
-                                <a class="dropdown-item" href="{{ route('packages.index') }}">
-                                    Packages
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('packages.index') }}">
+                                            Packages
+                                        </a>
 
-                                <a class="dropdown-item" href="{{ route('promotions.index') }}">
-                                    Promotions
-                                </a>
+                                        <a class="dropdown-item" href="{{ route('promotions.index') }}">
+                                            Promotions
+                                        </a>
 
-                            </div>
-                        </li>
-                    </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        @endcan
+                    @endauth
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

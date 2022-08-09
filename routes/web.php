@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Content\Page;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,10 @@ Auth::routes();
 
 Route::get('/dev', function () {
 
+    dd(Gate::allows('admin'));
+
     dd(resolve('BookingXApiit'));
+
     // dd(resolve('view'));
 
     // $user = (new \App\Models\Auth\User)->where('role', 'admin')->first();
