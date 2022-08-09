@@ -14,8 +14,13 @@ class Role
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, string $role = 'user')
+    public function handle(Request $request, Closure $next, ?string $role = null)
     {
+
+        // if the role is null, throw an exception
+        if ($role === null) {
+            throw new \InvalidArgumentException('The $role argument is required.');
+        }
 
         // Student code
         if($request->user() && $request->user()->role === $role) {
