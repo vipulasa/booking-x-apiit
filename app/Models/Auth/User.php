@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use  Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -57,4 +58,14 @@ class User extends Authenticatable
         'address' => 'encrypted',
         'phone' => 'encrypted',
     ];
+
+    /**
+     * Check the user has the role
+     *
+     * @var array<string, string>
+     */
+    public function scopeHasRole(Builder $builder, string $role)
+    {
+        return $this->role === $role;
+    }
 }
