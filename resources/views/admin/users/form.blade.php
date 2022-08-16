@@ -3,9 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+
             <div class="col-md-8 bg-white p-4">
-                <form action="{{ route('users.update', $user->id) }}" method="POST">
-                    @method('PUT')
+                <form action="{{ $user->id ? route('users.update', $user->id) : route('users.store') }}" method="POST">
+                    @if ($user->id)
+                        @method('PUT')
+                    @endif
+
                     @csrf
 
                     <div class="col">

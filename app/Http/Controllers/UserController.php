@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Auth\User;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -36,7 +37,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.form');
+        return view('admin.users.form', [
+            'user' => new User()
+        ]);
     }
 
     /**
@@ -47,7 +50,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|max:255",
+            "password" => ['required', 'confirmed', Password::min(8)],
+            "first_name" => "required|max:255",
+            "last_name" => "required|max:255",
+            "phone" => "required|max:12",
+            "nic" => "required|max:12", // 20123456789v
+            "address" => "required",
+            "city" => "required",
+            "state" => "required",
+            "zip" => "required",
+            "country" => "required",
+            "role" => "required",
+        ]);
+
+        // check if the password is not empty and if it is then hash it
+        if (!is_null($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+
+        $user = (new User())->create($validated);
+
+        return redirect()->route('users.index')->with('success', 'User ' . $user->first_name . ' created successfully');
     }
 
     /**
@@ -83,37 +113,33 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-
+        $validated = $request->validate([
             "name" => "required|max:255",
-
             "email" => "required|max:255",
-
-            "password" => "nullable",
-            "password_confirmation" => "nullable",
-
+            "password" => ['nullable', 'confirmed', Password::min(8)],
             "first_name" => "required|max:255",
-
             "last_name" => "required|max:255",
-
             "phone" => "required|max:12",
-
             "nic" => "required|max:12", // 20123456789v
-
             "address" => "required",
-
             "city" => "required",
-
             "state" => "required",
-
             "zip" => "required",
-
             "country" => "required",
-
             "role" => "required",
         ]);
 
-        dd($request, $user);
+        // check if the password is not empty and if it is then hash it
+        if (!is_null($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        // Update user
+        $user->update($validated);
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
 
     /**
