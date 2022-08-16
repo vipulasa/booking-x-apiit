@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes([
+    // 'login' => false
+]);
+
+// Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+// Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
 
 Route::get('/dev', function () {
 

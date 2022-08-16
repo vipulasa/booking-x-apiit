@@ -94,6 +94,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        // check if the user ID is the ID of the current logged in user and prevent deletion of the current user
+        if ($id == auth()->id()) {
+            return redirect()->route('users.index')->with('error', 'You cannot delete yourself.');
+        }
+
         (new User())->newQuery()->find($id)->delete();
 
         return redirect()->route('users.index');
