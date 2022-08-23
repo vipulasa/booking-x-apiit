@@ -21,7 +21,7 @@
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <x-form-input id="name" name="name" label="User Name" type="text"
-                                value="{{ $user->name }}" help="User Name" />
+                                value="{{ $user->name }}" help="User Name" required />
                         </div>
                         <div class="col-md-6">
                             <x-form-input id="email" name="email" label="Email" type="email"
@@ -31,12 +31,12 @@
 
                     <div class="row mb-2">
                         <div class="col-md-6">
-                            <x-form-input id="password" name="password" label="Password" type="password" value=""
+                            <x-form-input id="password" name="password" label="Password" type="password"
                                 help="Min 8" />
                         </div>
                         <div class="col-md-6">
                             <x-form-input id="password_confirmation" name="password_confirmation" label="Confirm Password"
-                                type="password" value="" help="" />
+                                type="password" help="" />
                         </div>
                     </div>
 

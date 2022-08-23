@@ -21,7 +21,7 @@ class FormInput extends Component
      *
      * @return void
      */
-    public function __construct($id, $name, $label, $type, $value, $placeholder = '', $help = '', $required = false)
+    public function __construct($id, $name, $label, $type, $value = '', $placeholder = '', $help = '', $required = false)
     {
         $this->id = $id;
         $this->name = $name;
