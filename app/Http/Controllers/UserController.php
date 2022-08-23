@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\Auth\User;
-use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     $this->authorize('accessAdministration');
-    // }
 
     /**
      * Display a listing of the resource.
@@ -48,36 +44,22 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-
-        $validated = $request->validate([
-            "name" => "required|max:255",
-            "email" => "required|max:255",
-            "password" => ['required', 'confirmed', Password::min(8)],
-            "first_name" => "required|max:255",
-            "last_name" => "required|max:255",
-            "phone" => "required|max:12",
-            "nic" => "required|max:12", // 20123456789v
-            "address" => "required",
-            "city" => "required",
-            "state" => "required",
-            "zip" => "required",
-            "country" => "required",
-            "role" => "required",
-        ]);
-
-        // check if the password is not empty and if it is then hash it
-        if (!is_null($validated['password'])) {
-            $validated['password'] = bcrypt($validated['password']);
+        if ($request->get('password')) {
+            $request->offsetSet('password', bcrypt($request->password));
         } else {
-            unset($validated['password']);
+            $request->offsetUnset('password');
         }
 
+        // get the validated data
+        $validated = $request->validated();
 
         $user = (new User())->create($validated);
 
-        return redirect()->route('users.index')->with('success', 'User ' . $user->first_name . ' created successfully');
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User ' . $user->first_name . ' created successfully');
     }
 
     /**
@@ -111,35 +93,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $validated = $request->validate([
-            "name" => "required|max:255",
-            "email" => "required|max:255",
-            "password" => ['nullable', 'confirmed', Password::min(8)],
-            "first_name" => "required|max:255",
-            "last_name" => "required|max:255",
-            "phone" => "required|max:12",
-            "nic" => "required|max:12", // 20123456789v
-            "address" => "required",
-            "city" => "required",
-            "state" => "required",
-            "zip" => "required",
-            "country" => "required",
-            "role" => "required",
-        ]);
 
-        // check if the password is not empty and if it is then hash it
-        if (!is_null($validated['password'])) {
-            $validated['password'] = bcrypt($validated['password']);
+        if ($request->get('password')) {
+            $request->offsetSet('password', bcrypt($request->password));
         } else {
-            unset($validated['password']);
+            $request->offsetUnset('password');
         }
+
+        // get the validated data
+        $validated = $request->validated();
 
         // Update user
         $user->update($validated);
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully');
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User updated successfully');
     }
 
     /**
@@ -152,7 +123,9 @@ class UserController extends Controller
     {
         // check if the user ID is the ID of the current logged in user and prevent deletion of the current user
         if ($id == auth()->id()) {
-            return redirect()->route('users.index')->with('error', 'You cannot delete yourself.');
+            return redirect()
+                ->route('users.index')
+                ->with('error', 'You cannot delete yourself.');
         }
 
         (new User())->newQuery()->find($id)->delete();
