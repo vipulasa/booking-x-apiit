@@ -31,6 +31,9 @@ return new class extends Migration
             $table->string('zip')->nullable();
             $table->string('country')->nullable();
 
+            // user avatar
+            $table->string('avatar')->nullable();
+
             // settings
             $table->json('settings')->nullable();
             // [

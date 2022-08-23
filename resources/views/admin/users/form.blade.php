@@ -5,7 +5,8 @@
         <div class="row justify-content-center">
 
             <div class="col-md-8 bg-white p-4">
-                <form action="{{ $user->id ? route('users.update', $user->id) : route('users.store') }}" method="POST">
+                <form action="{{ $user->id ? route('users.update', $user->id) : route('users.store') }}" method="POST"
+                    enctype="multipart/form-data">
                     @if ($user->id)
                         @method('PUT')
                     @endif
@@ -44,6 +45,14 @@
                         <div class="col-12">
                             <h4>Personal Details</h4>
                             <hr>
+                        </div>
+
+                        <div class="col-12">
+                            @if ($user->avatar)
+                                <img src="/storage/{{ $user->avatar }}" class="w-25 rounded mb-2">
+                            @endif
+                            <x-form-input id="avatar" name="avatar" label="Profile Image" type="file" value=""
+                                help="Please upload an image with the resolution of 180px X 180px" />
                         </div>
 
                         <div class="col-12">

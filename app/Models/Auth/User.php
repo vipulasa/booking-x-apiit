@@ -32,6 +32,7 @@ class User extends Authenticatable
         'zip',
         'country',
         'settings',
+        'avatar',
         'role', // 'admin', 'user', 'manager'
     ];
 
