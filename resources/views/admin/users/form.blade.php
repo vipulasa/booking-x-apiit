@@ -48,10 +48,7 @@
                         </div>
 
                         <div class="col-12">
-                            @if ($user->avatar)
-                                <img src="/storage/{{ $user->avatar }}" class="w-25 rounded mb-2">
-                            @endif
-                            <x-form-input id="avatar" name="avatar" label="Profile Image" type="file" value=""
+                            <x-form-input id="avatar" name="avatar" label="Profile Image" type="file" value="{{ $user->avatar }}"
                                 help="Please upload an image with the resolution of 180px X 180px" />
                         </div>
 

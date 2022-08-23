@@ -1,5 +1,5 @@
 <div class="mb-3 row">
-    <div class="{{  $type == 'file' ? 'col-8' : '' }}">
+    <div class="{{ $type == 'file' ? 'col-8' : '' }}">
         <label for="{{ $id }}" class="form-label">{{ $label }}</label>
 
         <input type="{{ $type }}" class="form-control @error($name) is-invalid @enderror" id="{{ $id }}"
@@ -15,7 +15,7 @@
 
     @if ($type === 'file')
         <div class="col-4">
-            <img src="" id="{{ $id }}-img" class="w-100">
+            <img src="/storage/{{ $value }}" id="{{ $id }}-img" class="w-100">
         </div>
     @endif
 </div>
