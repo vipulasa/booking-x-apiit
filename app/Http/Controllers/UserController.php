@@ -112,7 +112,10 @@ class UserController extends Controller
 
         if($request->file('avatar')){
             // check if the file exists in the directory and delete it
-            Storage::delete($user->avatar);
+            if($user->avatar){
+                Storage::delete($user->avatar);
+            }
+
 
             $validated['avatar'] = $request->file('avatar')->store('avatars');
         }

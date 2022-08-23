@@ -19,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>
