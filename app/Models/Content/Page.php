@@ -5,10 +5,15 @@ namespace App\Models\Content;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Page extends Model
+class Page extends Model implements HasMedia
 {
     use HasFactory,
+        InteractsWithMedia,
         SoftDeletes;
 
     /**
@@ -27,6 +32,7 @@ class Page extends Model
      * @var array<string>
      */
     protected $fillable = [
+        'category_id',
         'title',
         'url',
         'summary',
@@ -48,4 +54,12 @@ class Page extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
+    }
 }

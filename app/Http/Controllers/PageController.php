@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
+use App\Models\Category;
 use App\Models\Content\Page;
 
 class PageController extends Controller
@@ -15,7 +16,13 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = (new Page())
+            ->newQuery()
+            ->paginate(10);
+
+        return view('admin.pages.index', [
+            'pages' => $pages,
+        ]);
     }
 
     /**
@@ -25,7 +32,10 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.form', [
+            'page' => new Page(),
+            'categories' => (new Category())->where('status', 1)->get()
+        ]);
     }
 
     /**
@@ -36,7 +46,18 @@ class PageController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $page = (new Page())->create($validated);
+
+        // check if the request has an image
+        if($request->has('image')){
+            $page->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+
+        return redirect()
+            ->route('pages.index')
+            ->with('success', 'Page created successfully.');
     }
 
     /**
@@ -58,7 +79,10 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return view('admin.pages.form', [
+            'page' => $page,
+            'categories' => (new Category())->where('status', 1)->get()
+        ]);
     }
 
     /**
@@ -70,7 +94,19 @@ class PageController extends Controller
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
-        //
+        $validated = $request->validated();
+
+        $page->update($validated);
+
+        // check if the request has an image
+        if($request->has('image')){
+            $page->clearMediaCollection('images');
+            $page->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+
+        return redirect()
+            ->route('pages.index')
+            ->with('success', 'Page updated successfully.');
     }
 
     /**
@@ -81,6 +117,11 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+
+        $page->delete();
+
+        return redirect()
+            ->route('pages.index')
+            ->with('success', 'Page deleted successfully');
     }
 }

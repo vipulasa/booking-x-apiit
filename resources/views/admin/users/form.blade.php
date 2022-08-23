@@ -116,7 +116,11 @@
                         </div>
                         <div class="col-12">
                             <x-form-select id="role" name="role" label="Role" value="{{ $user->role }}"
-                                help="User role" placeholder="Select Role" :options="['admin', 'user', 'manager']" />
+                                help="User role" placeholder="Select Role" :options="[
+                                    'admin' => 'admin',
+                                    'user' => 'user',
+                                    'manager' => 'manager'
+                                ]" />
                         </div>
                     </div>
 

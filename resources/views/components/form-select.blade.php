@@ -3,9 +3,9 @@
     <select class="form-control @error($name) is-invalid @enderror" id="{{ $id }}" name="{{ $name }}"
         aria-describedby="{{ $name }}Help">
         <option value="">{{ $placeholder }}</option>
-        @foreach ($options as $option)
-            <option value="{{ $option }}" {{ $option == $value ? 'selected' : '' }}>
-                {{ $option }}
+        @foreach ($options as $option_key => $option_value)
+            <option value="{{ $option_key }}" {{ $option_key == $value ? 'selected' : '' }}>
+                {{ $option_value }}
             </option>
         @endforeach
     </select>
