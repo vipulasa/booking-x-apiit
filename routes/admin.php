@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'admin',
-    'middleware' => ['auth', 'role:admin']
+    'middleware' => ['auth', 'role:admin'],
+    'as' => 'admin.'
 ], function () {
 
     // Dashboard
-    Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('dashboard');
 
     // Users
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);

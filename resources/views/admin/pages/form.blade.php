@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
 
             <div class="col-md-8 bg-white p-4">
-                <form action="{{ $page->id ? route('pages.update', $page->id) : route('pages.store') }}" method="POST"
+                <form action="{{ $page->id ? route('admin.pages.update', $page->id) : route('admin.pages.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @if ($page->id)
                         @method('PUT')

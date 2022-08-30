@@ -23,8 +23,8 @@
                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" style="height: 20px;" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" style="height: 20px;"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -38,14 +38,15 @@
                         @php
                             $route = strtolower(Str::plural(class_basename($model)));
                         @endphp
-                        <a href="{{ route($route . '.show', $model->id) }}" class="btn btn-sm btn-success">
+                        <a href="{{ route('admin.' . $route . '.show', $model->id) }}" class="btn btn-sm btn-success">
                             View
                         </a>
-                        <a href="{{ route($route . '.edit', $model->id) }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('admin.' . $route . '.edit', $model->id) }}" class="btn btn-sm btn-primary">
                             Edit
                         </a>
                         <form id="model-delete-{{ $model->id }}"
-                            action="{{ route($route . '.destroy', $model->id) }}" method="POST" class="d-inline">
+                            action="{{ route('admin.' . $route . '.destroy', $model->id) }}" method="POST"
+                            class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="button"

@@ -53,54 +53,54 @@
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Authentication</small>
-                                        <a class="dropdown-item" href="{{ route('users.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                             Users
                                         </a>
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Content</small>
-                                        <a class="dropdown-item" href="{{ route('pages.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.pages.index') }}">
                                             Pages
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('categories.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.categories.index') }}">
                                             Categories
                                         </a>
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Booking & Reservations</small>
 
-                                        <a class="dropdown-item" href="{{ route('bookings.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.bookings.index') }}">
                                             Bookings
                                         </a>
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Hotel</small>
 
-                                        <a class="dropdown-item" href="{{ route('hotels.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.hotels.index') }}">
                                             Hotels
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('facilities.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.facilities.index') }}">
                                             Facilities
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('dinings.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.dinings.index') }}">
                                             Dinings
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('accommodations.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.accommodations.index') }}">
                                             Accommodations
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('experiences.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.experiences.index') }}">
                                             Experiences
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('packages.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.packages.index') }}">
                                             Packages
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('promotions.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.promotions.index') }}">
                                             Promotions
                                         </a>
 

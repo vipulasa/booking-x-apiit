@@ -71,7 +71,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                 </div>

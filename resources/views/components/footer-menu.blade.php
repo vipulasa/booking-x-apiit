@@ -4,7 +4,7 @@
     </li>
     @foreach ($pages as $page)
         <li class="nav-item">
-            <a href="{{ route('page.show', $page->url) }}" class="nav-link px-2 text-muted">{{ $page->title }}</a>
+            <a href="{{ route('pages.show', $page->url) }}" class="nav-link px-2 text-muted">{{ $page->title }}</a>
         </li>
     @endforeach
 </ul>

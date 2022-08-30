@@ -14,7 +14,7 @@
                             <h2>{{ $hotel->name }}</h2>
                             <small>{{ $hotel->category->title }}</small>
                             <p>{{ Str::limit($hotel->description, 100, '...') }}</p>
-                            <a href="{{ route('hotel.show', $hotel->url) }}"
+                            <a href="{{ route('hotels.show', $hotel->url) }}"
                                 class="btn btn-primary">View</a>
                         </div>
                     </div>
