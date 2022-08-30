@@ -47,6 +47,10 @@ class AdminLoginController extends Controller
      */
     public function showLoginForm()
     {
+        // do not show the login if the admin user is already logged in
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('admin.dashboard');
+        }
         return view('auth.admin-login');
     }
 
