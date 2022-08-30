@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Models\Hotel\Accommodation;
 
 class Hotel extends Model implements HasMedia
 {
@@ -62,8 +63,14 @@ class Hotel extends Model implements HasMedia
     /**
      * Category
      */
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
+    }
+
+    public function accommodations()
+    {
+        return $this->hasMany(Accommodation::class);
     }
 
     /**

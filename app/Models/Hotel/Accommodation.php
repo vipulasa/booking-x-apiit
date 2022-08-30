@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Models\Hotel;
 
 class Accommodation extends Model implements HasMedia
 {
@@ -58,7 +59,9 @@ class Accommodation extends Model implements HasMedia
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'features' => 'array',
+    ];
 
     /**
      * Register media collection
@@ -69,5 +72,13 @@ class Accommodation extends Model implements HasMedia
             ->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
+    }
+
+    /**
+     * Get the hotel that owns the accommodation.
+     */
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
     }
 }
