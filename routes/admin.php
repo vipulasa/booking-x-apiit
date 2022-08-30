@@ -1,10 +1,17 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])
+    ->name('admin.login');
+
+Route::post('/admin/login', [AdminLoginController::class, 'login'])
+    ->name('admin.login');
 
 Route::group([
     'prefix' => 'admin',
-    'middleware' => ['auth', 'role:admin'],
+    'middleware' => ['auth:admin'],
     'as' => 'admin.'
 ], function () {
 
@@ -43,5 +50,4 @@ Route::group([
 
     // Hotels
     Route::resource('hotels', App\Http\Controllers\Admin\HotelController::class);
-
 });

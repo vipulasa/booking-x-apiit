@@ -37,8 +37,8 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    @auth
-                        @can('accessAdministration')
+                    @auth('admin')
+                        {{-- @can('accessAdministration') --}}
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -107,7 +107,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        @endcan
+                        {{-- @endcan --}}
                     @endauth
 
 
