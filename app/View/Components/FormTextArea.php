@@ -15,13 +15,14 @@ class FormTextArea extends Component
     public $placeholder;
     public $help;
     public $required;
+    public $ckeditor;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $name, $label, $type, $value = '', $placeholder = '', $help = '', $required = false)
+    public function __construct($id, $name, $label, $type, $value = '', $placeholder = '', $help = '', $ckeditor = '', $required = false)
     {
         $this->id = $id;
         $this->name = $name;
@@ -31,6 +32,7 @@ class FormTextArea extends Component
         $this->placeholder = $placeholder;
         $this->help = $help;
         $this->required = $required;
+        $this->ckeditor = $ckeditor;
     }
 
     /**
@@ -49,6 +51,7 @@ class FormTextArea extends Component
             'placeholder' => $this->placeholder,
             'help' => $this->help,
             'required' => $this->required,
+            'ckeditor' => $this->ckeditor,
         ]);
     }
 }

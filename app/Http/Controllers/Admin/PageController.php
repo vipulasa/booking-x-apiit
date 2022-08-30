@@ -76,7 +76,9 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        dd($page);
+        return view('admin.pages.show', [
+            'page' => $page,
+        ]);
     }
 
     /**

@@ -43,10 +43,11 @@ Route::get('/dev', function () {
     return view('home');
 });
 
-Route::get('/home', [
-    App\Http\Controllers\HomeController::class, 'index',
+Route::get('/', [
+    App\Http\Controllers\HomeController::class, 'index'
 ])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get('{url}', App\Http\Controllers\PageController::class)->name('page.show');
+
+

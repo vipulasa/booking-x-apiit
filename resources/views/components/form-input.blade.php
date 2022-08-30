@@ -19,27 +19,29 @@
         </div>
     @endif
 </div>
-@if ($type === 'file')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var input = document.getElementById('{{ $id }}');
-            input.addEventListener('change', function() {
+@push('scripts')
+    @if ($type === 'file')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var input = document.getElementById('{{ $id }}');
+                input.addEventListener('change', function() {
 
-                // check the type of the file that was selected (we only want images)
-                var fileType = input.files[0].type;
-                if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
-                    alert('Please select an image file (jpg or png)');
-                    input.value = '';
-                }
+                    // check the type of the file that was selected (we only want images)
+                    var fileType = input.files[0].type;
+                    if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
+                        alert('Please select an image file (jpg or png)');
+                        input.value = '';
+                    }
 
-                // show the selected image
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var img = document.getElementById('{{ $id }}-img');
-                    img.src = e.target.result;
-                }
-                reader.readAsDataURL(input.files[0]);
+                    // show the selected image
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var img = document.getElementById('{{ $id }}-img');
+                        img.src = e.target.result;
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                });
             });
-        });
-    </script>
-@endif
+        </script>
+    @endif
+@endpush

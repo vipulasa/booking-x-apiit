@@ -172,7 +172,14 @@
 
             @yield('content')
         </main>
+        <div class="container bg-white">
+            <footer class="py-3 my-4">
+                <x-footer-menu />
+                <p class="text-center text-muted">© {{ date('Y') }} APIIT Sri Lanka</p>
+            </footer>
+        </div>
     </div>
+    <script src="//cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+    @stack('scripts')
 </body>
-
 </html>

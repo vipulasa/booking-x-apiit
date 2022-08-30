@@ -38,7 +38,7 @@
 
                         <div class="col-12">
                             <x-form-textarea id="content" name="content" label="Content" type="text"
-                                value="{{ $page->content }}" help="Content" />
+                                value="{{ $page->content }}" help="Content" ckeditor="true" />
                         </div>
 
 
@@ -48,8 +48,8 @@
                                 <hr>
                             </div>
                             <div class="col-12">
-                                <x-form-select id="category_id" name="category_id" label="Page Category" value="{{ $page->category_id }}"
-                                    help="Page Category" placeholder="Select Category"
+                                <x-form-select id="category_id" name="category_id" label="Page Category"
+                                    value="{{ $page->category_id }}" help="Page Category" placeholder="Select Category"
                                     :options="$categories->pluck('title', 'id')" />
                             </div>
                         </div>
@@ -60,10 +60,18 @@
                         </div>
 
                         <div class="col-12">
-                            <input type="checkbox" class="form-check-input" id="status" name="status"
-                                aria-describedby="statusHelp" value="1"
-                                {{ old('status', $page->status) ? 'checked' : '' }} />
-                            <label for="status" class="form-label ms-2">Status</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <x-form-input id="sort_order" name="sort_order" label="Sort Order" type="number"
+                                        value="{{ $page->sort_order }}" help="Sort order of the pages" />
+                                </div>
+                                <div class="col-6">
+                                    <input type="checkbox" class="form-check-input" id="status" name="status"
+                                        aria-describedby="statusHelp" value="1"
+                                        {{ old('status', $page->status) ? 'checked' : '' }} />
+                                    <label for="status" class="form-label ms-2">Status</label>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
