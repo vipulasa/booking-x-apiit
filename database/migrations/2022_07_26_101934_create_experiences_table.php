@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('hotel_id')->unsigned()->nullable();
+            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->string('title');
+            $table->string('description');
+            $table->json('features')->nullable();
 
             $table->tinyInteger('sort_order')->default(0);
             $table->boolean('status')->default(true);

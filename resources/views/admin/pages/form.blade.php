@@ -56,7 +56,7 @@
 
                         <div class="col-12">
                             <x-form-input id="image" name="image" label="Image" type="file"
-                                value="{{ $page->getFirstMediaUrl('images') }}" help="" />
+                                value="{{ $page->getFirstMediaUrl('images', 'thumb') }}" help="" />
                         </div>
 
                         <div class="col-12">

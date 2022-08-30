@@ -1,23 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    <div class="container">
+        <div class="row">
+            @foreach ($hotels as $hotel)
+                <div class="col-md-4">
+                    <div class="card rounded shadow-sm">
+                        <div class="card-header m-0 p-0">
+                            <img src="{{ $hotel->getFirstMediaUrl('images', 'thumb') }}" alt="{{ $hotel->name }}"
+                                class="w-100">
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                        <div class="card-body">
+                            <h2>{{ $hotel->name }}</h2>
+                            <small>{{ $hotel->category->title }}</small>
+                            <p>{{ Str::limit($hotel->description, 100, '...') }}</p>
+                            <a href="{{ route('hotel.show', $hotel->url) }}"
+                                class="btn btn-primary">View</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
-</div>
 @endsection

@@ -55,6 +55,9 @@ class Page extends Model implements HasMedia
      */
     protected $casts = [];
 
+    /**
+     * Register media collection
+     */
     public function registerMediaConversions(Media $media = null): void
     {
         $this

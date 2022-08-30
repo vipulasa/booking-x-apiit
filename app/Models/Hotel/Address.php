@@ -27,6 +27,16 @@ class Address extends Model
      * @var array<string>
      */
     protected $fillable = [
+        'hotel_id',
+        'phone',
+        'email',
+        'address',
+        'address_two',
+        'postal_code',
+        'province',
+        'latitude',
+        'longitude',
+
         'sort_order',
         'status',
     ];
@@ -44,4 +54,5 @@ class Address extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
 }

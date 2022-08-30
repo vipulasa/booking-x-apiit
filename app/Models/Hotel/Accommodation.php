@@ -5,10 +5,15 @@ namespace App\Models\Hotel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Accommodation extends Model
+class Accommodation extends Model implements HasMedia
 {
     use HasFactory,
+        InteractsWithMedia,
         SoftDeletes;
 
     /**
@@ -27,6 +32,16 @@ class Accommodation extends Model
      * @var array<string>
      */
     protected $fillable = [
+
+        'hotel_id',
+        'room_type',
+        'occupancy',
+        'number_of_rooms',
+        'room_size',
+        'room_view',
+        'beds',
+        'bathrooms',
+        'features',
         'sort_order',
         'status',
     ];
@@ -44,4 +59,15 @@ class Accommodation extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * Register media collection
+     */
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
+    }
 }

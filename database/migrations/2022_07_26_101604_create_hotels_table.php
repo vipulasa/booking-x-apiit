@@ -19,6 +19,15 @@ return new class extends Migration
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
+            $table->string('name');
+            $table->string('url')->unique();
+            $table->longText('description')->nullable();
+            $table->longText('health_and_safety')->nullable();
+            $table->text('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+
             $table->tinyInteger('sort_order')->default(0);
             $table->boolean('status')->default(true);
             $table->timestamps();

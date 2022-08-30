@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-
+            $table->bigInteger('hotel_id')->unsigned()->nullable();
+            $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
