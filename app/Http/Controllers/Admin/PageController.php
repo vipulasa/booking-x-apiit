@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Models\Category;
 use App\Models\Content\Page;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
@@ -48,10 +50,16 @@ class PageController extends Controller
     {
         $validated = $request->validated();
 
-        $page = (new Page())->create($validated);
+        $page = (new Page())->create([
+            "title" => $validated['title'],
+            "url" => Str::slug($validated['url']),
+            "summary" => $validated['summary'],
+            "content" => $validated['content'],
+            "category_id" => $validated['category_id'],
+        ]);
 
         // check if the request has an image
-        if($request->has('image')){
+        if ($request->has('image')) {
             $page->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
@@ -68,7 +76,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+        dd($page);
     }
 
     /**
@@ -96,10 +104,16 @@ class PageController extends Controller
     {
         $validated = $request->validated();
 
-        $page->update($validated);
+        $page->update([
+            "title" => $validated['title'],
+            "url" => Str::slug($validated['url']),
+            "summary" => $validated['summary'],
+            "content" => $validated['content'],
+            "category_id" => $validated['category_id'],
+        ]);
 
         // check if the request has an image
-        if($request->has('image')){
+        if ($request->has('image')) {
             $page->clearMediaCollection('images');
             $page->addMediaFromRequest('image')->toMediaCollection('images');
         }

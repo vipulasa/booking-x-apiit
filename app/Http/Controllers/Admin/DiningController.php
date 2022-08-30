@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreFacilityRequest;
-use App\Http\Requests\UpdateFacilityRequest;
-use App\Models\Hotel\Facility;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDiningRequest;
+use App\Http\Requests\UpdateDiningRequest;
+use App\Models\Hotel\Dining;
 
-class FacilityController extends Controller
+class DiningController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class FacilityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFacilityRequest  $request
+     * @param  \App\Http\Requests\StoreDiningRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFacilityRequest $request)
+    public function store(StoreDiningRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class FacilityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hotel\Facility  $facility
+     * @param  \App\Models\Hotel\Dining  $dining
      * @return \Illuminate\Http\Response
      */
-    public function show(Facility $facility)
+    public function show(Dining $dining)
     {
         //
     }
@@ -53,10 +54,10 @@ class FacilityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Hotel\Facility  $facility
+     * @param  \App\Models\Hotel\Dining  $dining
      * @return \Illuminate\Http\Response
      */
-    public function edit(Facility $facility)
+    public function edit(Dining $dining)
     {
         //
     }
@@ -64,11 +65,11 @@ class FacilityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFacilityRequest  $request
-     * @param  \App\Models\Hotel\Facility  $facility
+     * @param  \App\Http\Requests\UpdateDiningRequest  $request
+     * @param  \App\Models\Hotel\Dining  $dining
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFacilityRequest $request, Facility $facility)
+    public function update(UpdateDiningRequest $request, Dining $dining)
     {
         //
     }
@@ -76,10 +77,10 @@ class FacilityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hotel\Facility  $facility
+     * @param  \App\Models\Hotel\Dining  $dining
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Facility $facility)
+    public function destroy(Dining $dining)
     {
         //
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreAddressRequest;
-use App\Http\Requests\UpdateAddressRequest;
-use App\Models\Hotel\Address;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAccommodationRequest;
+use App\Http\Requests\UpdateAccommodationRequest;
+use App\Models\Hotel\Accommodation;
 
-class AddressController extends Controller
+class AccommodationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class AddressController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAddressRequest  $request
+     * @param  \App\Http\Requests\StoreAccommodationRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAddressRequest $request)
+    public function store(StoreAccommodationRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hotel\Address  $address
+     * @param  \App\Models\Hotel\Accommodation  $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function show(Address $address)
+    public function show(Accommodation $accommodation)
     {
         //
     }
@@ -53,10 +54,10 @@ class AddressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Hotel\Address  $address
+     * @param  \App\Models\Hotel\Accommodation  $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Address $address)
+    public function edit(Accommodation $accommodation)
     {
         //
     }
@@ -64,11 +65,11 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAddressRequest  $request
-     * @param  \App\Models\Hotel\Address  $address
+     * @param  \App\Http\Requests\UpdateAccommodationRequest  $request
+     * @param  \App\Models\Hotel\Accommodation  $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAddressRequest $request, Address $address)
+    public function update(UpdateAccommodationRequest $request, Accommodation $accommodation)
     {
         //
     }
@@ -76,10 +77,10 @@ class AddressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hotel\Address  $address
+     * @param  \App\Models\Hotel\Accommodation  $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(Accommodation $accommodation)
     {
         //
     }

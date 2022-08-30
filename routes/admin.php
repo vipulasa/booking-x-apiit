@@ -8,39 +8,39 @@ Route::group([
 ], function () {
 
     // Dashboard
-    Route::get('dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.dashboard');
 
     // Users
-    Route::resource('users', App\Http\Controllers\UserController::class);
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
 
     // Pages
-    Route::resource('pages', App\Http\Controllers\PageController::class);
+    Route::resource('pages', App\Http\Controllers\Admin\PageController::class);
 
     // Bookings
-    Route::resource('bookings', App\Http\Controllers\BookingController::class);
+    Route::resource('bookings', App\Http\Controllers\Admin\BookingController::class);
 
     // Packages
-    Route::resource('packages', App\Http\Controllers\PackageController::class);
+    Route::resource('packages', App\Http\Controllers\Admin\PackageController::class);
 
     // Promotions
-    Route::resource('promotions', App\Http\Controllers\PromotionController::class);
+    Route::resource('promotions', App\Http\Controllers\Admin\PromotionController::class);
 
     // Accommodations
-    Route::resource('accommodations', App\Http\Controllers\AccommodationController::class);
+    Route::resource('accommodations', App\Http\Controllers\Admin\AccommodationController::class);
 
     // Dinings
-    Route::resource('dinings', App\Http\Controllers\DiningController::class);
+    Route::resource('dinings', App\Http\Controllers\Admin\DiningController::class);
 
     // Experiences
-    Route::resource('experiences', App\Http\Controllers\ExperienceController::class);
+    Route::resource('experiences', App\Http\Controllers\Admin\ExperienceController::class);
 
     // Facilities
-    Route::resource('facilities', App\Http\Controllers\FacilityController::class);
+    Route::resource('facilities', App\Http\Controllers\Admin\FacilityController::class);
 
     // Categories
-    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
 
     // Hotels
-    Route::resource('hotels', App\Http\Controllers\HotelController::class);
+    Route::resource('hotels', App\Http\Controllers\Admin\HotelController::class);
 
 });

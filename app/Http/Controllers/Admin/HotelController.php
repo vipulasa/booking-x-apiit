@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StorePromotionRequest;
-use App\Http\Requests\UpdatePromotionRequest;
-use App\Models\Finance\Promotion;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHotelRequest;
+use App\Http\Requests\UpdateHotelRequest;
+use App\Models\Hotel;
 
-class PromotionController extends Controller
+class HotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class PromotionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePromotionRequest  $request
+     * @param  \App\Http\Requests\StoreHotelRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePromotionRequest $request)
+    public function store(StoreHotelRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class PromotionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Finance\Promotion  $promotion
+     * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(Promotion $promotion)
+    public function show(Hotel $hotel)
     {
         //
     }
@@ -53,10 +54,10 @@ class PromotionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Finance\Promotion  $promotion
+     * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Promotion $promotion)
+    public function edit(Hotel $hotel)
     {
         //
     }
@@ -64,11 +65,11 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePromotionRequest  $request
-     * @param  \App\Models\Finance\Promotion  $promotion
+     * @param  \App\Http\Requests\UpdateHotelRequest  $request
+     * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePromotionRequest $request, Promotion $promotion)
+    public function update(UpdateHotelRequest $request, Hotel $hotel)
     {
         //
     }
@@ -76,10 +77,10 @@ class PromotionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Finance\Promotion  $promotion
+     * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Promotion $promotion)
+    public function destroy(Hotel $hotel)
     {
         //
     }

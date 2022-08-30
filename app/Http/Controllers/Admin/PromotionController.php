@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreExperienceRequest;
-use App\Http\Requests\UpdateExperienceRequest;
-use App\Models\Hotel\Experience;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePromotionRequest;
+use App\Http\Requests\UpdatePromotionRequest;
+use App\Models\Finance\Promotion;
 
-class ExperienceController extends Controller
+class PromotionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class ExperienceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreExperienceRequest  $request
+     * @param  \App\Http\Requests\StorePromotionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreExperienceRequest $request)
+    public function store(StorePromotionRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class ExperienceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hotel\Experience  $experience
+     * @param  \App\Models\Finance\Promotion  $promotion
      * @return \Illuminate\Http\Response
      */
-    public function show(Experience $experience)
+    public function show(Promotion $promotion)
     {
         //
     }
@@ -53,10 +54,10 @@ class ExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Hotel\Experience  $experience
+     * @param  \App\Models\Finance\Promotion  $promotion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Experience $experience)
+    public function edit(Promotion $promotion)
     {
         //
     }
@@ -64,11 +65,11 @@ class ExperienceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateExperienceRequest  $request
-     * @param  \App\Models\Hotel\Experience  $experience
+     * @param  \App\Http\Requests\UpdatePromotionRequest  $request
+     * @param  \App\Models\Finance\Promotion  $promotion
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateExperienceRequest $request, Experience $experience)
+    public function update(UpdatePromotionRequest $request, Promotion $promotion)
     {
         //
     }
@@ -76,10 +77,10 @@ class ExperienceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hotel\Experience  $experience
+     * @param  \App\Models\Finance\Promotion  $promotion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Experience $experience)
+    public function destroy(Promotion $promotion)
     {
         //
     }
