@@ -24,19 +24,6 @@ class PageController extends Controller
     ];
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.pages.form', [
-            'page' => new Page(),
-            'categories' => (new Category())->where('status', 1)->get()
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StorePageRequest  $request
@@ -86,7 +73,7 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         return view('admin.pages.form', [
-            'page' => $page,
+            'model' => $page,
             'categories' => (new Category())->where('status', 1)->get()
         ]);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Helpers;
 
 use Illuminate\Support\Str;
+use App\Models\Category;
 
 trait ListView
 {
@@ -45,10 +46,32 @@ trait ListView
         ]);
     }
 
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // get the model
+        $model = $this->getModel();
+
+        // take the class base name and make it plural
+        $name = Str::plural(strtolower(class_basename($model)));
+
+        return view('admin.' . $name . '.form', [
+            'model' => $model,
+            'categories' => (new Category())->where('status', 1)->get()
+        ]);
+    }
+
+
     /**
      * Get model fields
      */
-    private function getFields(){
+    private function getFields()
+    {
         return isset($this->fields) && $this->fields ? $this->fields : $this->getModel()->getFillable();
     }
 
