@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AdminLoginController extends Controller
@@ -37,7 +38,6 @@ class AdminLoginController extends Controller
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -55,6 +55,29 @@ class AdminLoginController extends Controller
     }
 
     /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request)
+    {
+
+        $this->guard()->logout();
+
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
+    }
+
+    /**
      * Get the guard to be used during authentication.
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
@@ -63,5 +86,4 @@ class AdminLoginController extends Controller
     {
         return Auth::guard('admin');
     }
-
 }
