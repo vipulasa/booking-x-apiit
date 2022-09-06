@@ -52,7 +52,9 @@ class AccommodationController extends Controller
      */
     public function edit(Accommodation $accommodation)
     {
-        //
+        return view('admin.accommodations.form', [
+            'model' => $accommodation
+        ]);
     }
 
     /**

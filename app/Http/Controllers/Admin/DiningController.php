@@ -22,7 +22,7 @@ class DiningController extends Controller
      */
     public function store(StoreDiningRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

@@ -12,10 +12,14 @@
 
                     @csrf
 
-                    <div class="col">
-                        <h4>Form Details</h4>
-                        <hr>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Form Details</h4>
+                            <hr>
+                        </div>
                     </div>
+
+                    <x-hotel-list :hotel-id="$model->hotel_id" />
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
