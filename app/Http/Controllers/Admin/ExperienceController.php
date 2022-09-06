@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Helpers\ListView;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExperienceRequest;
 use App\Http\Requests\UpdateExperienceRequest;
@@ -9,15 +10,16 @@ use App\Models\Hotel\Experience;
 
 class ExperienceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    use ListView;
+
+    protected $model = Experience::class;
+
+    protected $fields = [
+        'hotel_id',
+        'title',
+        'sort_order',
+        'status',
+    ];
 
     /**
      * Show the form for creating a new resource.

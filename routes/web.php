@@ -45,9 +45,9 @@ Route::get('/dev', function () {
 
 Route::get('/hotel/{url}', App\Http\Controllers\HotelController::class)->name('hotels.show');
 
+Route::get('/category/{id}', App\Http\Controllers\CategoryController::class)
+    ->name('categories.show');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::get('{url}', App\Http\Controllers\PageController::class)->name('pages.show');
-
-

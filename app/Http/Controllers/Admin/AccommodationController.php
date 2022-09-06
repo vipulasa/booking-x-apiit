@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Helpers\ListView;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAccommodationRequest;
 use App\Http\Requests\UpdateAccommodationRequest;
@@ -9,15 +10,17 @@ use App\Models\Hotel\Accommodation;
 
 class AccommodationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    use ListView;
+
+    protected $model = Accommodation::class;
+
+    protected $fields = [
+        'hotel_id',
+        'room_type',
+        'occupancy',
+        'sort_order',
+        'status',
+    ];
 
     /**
      * Show the form for creating a new resource.

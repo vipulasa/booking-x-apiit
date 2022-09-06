@@ -45,6 +45,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'nic',
+        'settings',
     ];
 
     /**

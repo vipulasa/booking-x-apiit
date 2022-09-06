@@ -33,7 +33,6 @@ class Accommodation extends Model implements HasMedia
      * @var array<string>
      */
     protected $fillable = [
-
         'hotel_id',
         'room_type',
         'occupancy',

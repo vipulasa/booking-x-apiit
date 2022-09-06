@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Helpers\ListView;
 use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Models\Category;
@@ -11,21 +12,16 @@ use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $pages = (new Page())
-            ->newQuery()
-            ->paginate(10);
+    use ListView;
 
-        return view('admin.pages.index', [
-            'pages' => $pages,
-        ]);
-    }
+    protected $model = Page::class;
+
+    protected $fields = [
+        'title',
+        'url',
+        'sort_order',
+        'status',
+    ];
 
     /**
      * Show the form for creating a new resource.

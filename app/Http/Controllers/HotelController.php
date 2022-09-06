@@ -15,6 +15,7 @@ class HotelController extends Controller
      */
     public function __invoke(Request $request, string $url)
     {
+
         $hotel = (new Hotel())
             ->newQuery()
             ->where('url', $url)

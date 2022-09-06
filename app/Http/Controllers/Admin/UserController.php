@@ -8,25 +8,18 @@ use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Admin\Helpers\ListView;
 
 class UserController extends Controller
 {
+    use ListView;
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = (new User())
-            ->newQuery()
-            ->paginate(10);
+    protected $model = User::class;
 
-        return view('admin.users.index', [
-            'users' => $users
-        ]);
-    }
+    protected $fields = [
+        'name',
+        'email',
+    ];
 
     /**
      * Show the form for creating a new resource.
