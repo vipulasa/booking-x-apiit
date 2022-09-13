@@ -52,7 +52,9 @@ class Dining extends Model implements HasMedia
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'features' => 'array',
+    ];
 
     /**
      * Register media collection

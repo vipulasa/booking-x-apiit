@@ -66,7 +66,6 @@ trait ListView
         ]);
     }
 
-
     /**
      * Get model fields
      */

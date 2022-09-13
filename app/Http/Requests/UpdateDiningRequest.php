@@ -13,7 +13,7 @@ class UpdateDiningRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateDiningRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'hotel_id' => 'required|exists:hotels,id',
+            'title' => 'required',
+            'description' => 'required',
         ];
     }
 }

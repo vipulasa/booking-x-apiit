@@ -24,7 +24,9 @@ class StoreDiningRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'hotel_id' => 'required|exists:hotels,id',
+            'title' => 'required',
+            'description' => 'required',
         ];
     }
 }
