@@ -13,7 +13,7 @@ class UpdateHotelRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdateHotelRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_id' => 'required|exists:categories,id',
+            'name' => 'required',
+            'url' => 'required',
+            'description' => 'required',
+            'health_and_safety' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'website' => 'required',
         ];
     }
 }

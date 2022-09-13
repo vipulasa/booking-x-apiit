@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
 use App\Models\Hotel;
+use App\Models\Category;
+use Illuminate\Support\Str;
 
 class HotelController extends Controller
 {
@@ -31,7 +33,28 @@ class HotelController extends Controller
      */
     public function store(StoreHotelRequest $request)
     {
-        //
+        // update the url attribute with the slug
+        $request->merge([
+            'url' => Str::slug($request->name)
+        ]);
+
+        // get the model
+        $model = $this->getModel();
+
+        // create a new instance of the model
+        $model = $model
+            ->newQuery()
+            ->create($request->all());
+
+        // check if the model was created
+        if (!$model) {
+            abort(500);
+        }
+
+        // redirect to the index page
+        return redirect()
+            ->route('admin.hotels.index')
+            ->with('success', 'Hotel created successfully');
     }
 
     /**
@@ -53,7 +76,10 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        //
+        return view('admin.hotels.form', [
+            'model' => $hotel,
+            'categories' => (new Category())->where('status', 1)->get()
+        ]);
     }
 
     /**
@@ -65,7 +91,19 @@ class HotelController extends Controller
      */
     public function update(UpdateHotelRequest $request, Hotel $hotel)
     {
-        //
+
+        // update the url attribute with the slug
+        $request->merge([
+            'url' => Str::slug($request->name)
+        ]);
+
+        // update the model
+        $hotel->update($request->all());
+
+        // redirect to the index page
+        return redirect()
+            ->route('admin.hotels.index')
+            ->with('success', 'Hotel updated successfully');
     }
 
     /**
@@ -76,6 +114,10 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        $hotel->delete();
+
+        return redirect()
+            ->route('admin.hotels.index')
+            ->with('success', 'Hotel deleted successfully');
     }
 }

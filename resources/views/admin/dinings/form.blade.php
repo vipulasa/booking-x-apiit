@@ -14,7 +14,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <h4>Form Details</h4>
+                            <h4>Dining</h4>
                             <hr>
                         </div>
                     </div>
