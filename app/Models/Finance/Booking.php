@@ -5,6 +5,8 @@ namespace App\Models\Finance;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Auth\User;
+use App\Models\Finance\Package;
 
 class Booking extends Model
 {
@@ -26,6 +28,13 @@ class Booking extends Model
      * @var array<string>
      */
     protected $fillable = [
+        'package_id',
+        'user_id',
+        'number_of_days',
+        'number_of_people',
+        'reservation_start',
+        'reservation_end',
+        'total_price',
         'status',
     ];
 
@@ -41,5 +50,28 @@ class Booking extends Model
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'reservation_start' => 'datetime',
+        'reservation_end' => 'datetime',
+    ];
+
+    /**
+     * Get the package that owns the Booking
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    /**
+     * Get the user that owns the Booking
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
