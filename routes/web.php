@@ -43,6 +43,10 @@ Route::get('/dev', function () {
     return view('home');
 });
 
+Route::middleware(['auth:web'])
+->get('/reservation/{package}', App\Http\Controllers\ReservationController::class)
+->name('reservation.show');
+
 Route::get('/hotel/{url}', App\Http\Controllers\HotelController::class)->name('hotels.show');
 
 Route::get('/category/{id}', App\Http\Controllers\CategoryController::class)

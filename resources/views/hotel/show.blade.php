@@ -172,6 +172,9 @@
                                                 <li>price perday: LKR {{ number_format($package->price_perday, 2) }}</li>
                                                 <li>Nationality: {{ $package->nationality }}</li>
                                             </ul>
+                                            <a href="{{ route('reservation.show', $package->id) }}" class="btn btn-success">
+                                                Book Now
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

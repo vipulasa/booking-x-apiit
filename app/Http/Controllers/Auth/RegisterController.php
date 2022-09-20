@@ -71,4 +71,23 @@ class RegisterController extends Controller
             'role' => 'user',
         ]);
     }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        // check if the session has a key called url_redirect and redirect the user to the value of that key
+        if (session()->has('url_redirect')) {
+            return session()->get('url_redirect');
+        }
+
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+    }
 }
