@@ -39,7 +39,7 @@ class ReservationController extends Controller
         $total_price = $total_price_per_day * $number_of_days;
 
         // create the booking
-        (new Booking())->create([
+        $booking = (new Booking())->create([
             'package_id' => $request->package_id,
             'user_id' => $request->user_id,
             'number_of_days' => $number_of_days,
@@ -49,6 +49,8 @@ class ReservationController extends Controller
             'total_price' => $total_price,
             'status' => 1,
         ]);
+
+        auth()->user()->notify((new \App\Notifications\ReservationSuccess($booking)));
 
         return redirect()->route('reservation.index');
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Content\Page;
+use App\Models\Finance\Booking;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,9 @@ Auth::routes([
 
 Route::get('/dev', function () {
 
-    dd(Gate::allows('admin'));
+    // dd(Gate::allows('admin'));
 
-    dd(resolve('BookingXApiit'));
+    // dd(resolve('BookingXApiit'));
 
     // dd(resolve('view'));
 
@@ -40,7 +41,9 @@ Route::get('/dev', function () {
 
     // dd('dev');
 
-    return view('home');
+    // auth()->user()->notify((new \App\Notifications\ReservationSuccess((new Booking())->find(1))));
+
+    // return view('home');
 });
 
 Route::middleware(['auth:web'])->get('/reservation/{package}', [App\Http\Controllers\ReservationController::class, 'show'])->name('reservation.show');
