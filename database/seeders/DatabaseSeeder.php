@@ -52,6 +52,10 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             HotelSeeder::class,
             AccommodationSeeder::class,
+            ExperienceSeeder::class,
+            DiningSeeder::class,
+            FacilitySeeder::class,
+            PackageSeeder::class,
         ]);
     }
 }

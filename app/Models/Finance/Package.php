@@ -5,6 +5,10 @@ namespace App\Models\Finance;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Hotel\Dining;
+use App\Models\Hotel\Experience;
+use App\Models\Hotel\Facility;
+use App\Models\Hotel;
 
 class Package extends Model
 {
@@ -27,6 +31,23 @@ class Package extends Model
      * @var array<string>
      */
     protected $fillable = [
+        'hotel_id',
+
+        'title',
+        'description',
+
+        'price_fixed',
+        'price_per_person',
+        'price_perday',
+
+        'occupancy',
+
+        // experiences - belongs to many experiences
+        // dinings - belongs to many relationship
+        // facilities - belongs to many relationship
+
+        'nationality', // local, forign
+
         'sort_order',
         'status',
     ];
@@ -44,4 +65,24 @@ class Package extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function experiences()
+    {
+        return $this->belongsToMany(Experience::class);
+    }
+
+    public function dinings()
+    {
+        return $this->belongsToMany(Dining::class);
+    }
+
+    public function facilities()
+    {
+        return $this->belongsToMany(Facility::class);
+    }
 }
