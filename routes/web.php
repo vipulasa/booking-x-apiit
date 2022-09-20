@@ -43,9 +43,15 @@ Route::get('/dev', function () {
     return view('home');
 });
 
+Route::middleware(['auth:web'])->get('/reservation/{package}', [App\Http\Controllers\ReservationController::class, 'show'])->name('reservation.show');
+
 Route::middleware(['auth:web'])
-->get('/reservation/{package}', App\Http\Controllers\ReservationController::class)
-->name('reservation.show');
+->post('/reservation/{package}', [App\Http\Controllers\ReservationController::class, 'reserve'])
+->name('reservation.reserve');
+
+Route::middleware(['auth:web'])
+->get('/reservations', [App\Http\Controllers\ReservationController::class, 'index'])
+->name('reservation.index');
 
 Route::get('/hotel/{url}', App\Http\Controllers\HotelController::class)->name('hotels.show');
 

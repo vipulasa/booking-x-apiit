@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use  Illuminate\Database\Eloquent\Builder;
+use App\Models\Finance\Booking;
 
 class User extends Authenticatable
 {
@@ -69,5 +70,10 @@ class User extends Authenticatable
     public function scopeHasRole(Builder $builder, string $role)
     {
         return $this->role === $role;
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }
