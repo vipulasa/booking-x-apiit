@@ -19,6 +19,14 @@ class HotelController extends Controller
         $hotel = (new Hotel())
             ->newQuery()
             ->where('url', $url)
+            ->with([
+                'media',
+                'category',
+                'experiences',
+                'dining',
+                'facilities',
+                'packages'
+            ])
             ->first();
 
         if (!$hotel) {
