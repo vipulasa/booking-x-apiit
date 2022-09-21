@@ -114,6 +114,9 @@
                         </div>
                     </div>
 
+                    <x-form-input id="images" name="images" label="Image" type="file" value="{{ $model->getFirstMediaUrl('images') }}"
+                        help="Please upload an image with the minimum resolution of 640px X 640px" />
+
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>

@@ -110,6 +110,12 @@ class HotelController extends Controller
             $hotel->categories()->sync($request->categories);
         }
 
+        // check if the request has images and add them to the media collection
+        if ($request->has('images')) {
+            $hotel->clearMediaCollection('images');
+            $hotel->addMediaFromRequest('images')->toMediaCollection('images');
+        }
+
         // redirect to the index page
         return redirect()
             ->route('admin.hotels.index')
